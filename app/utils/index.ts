@@ -1,5 +1,4 @@
 // Re-export utilities untuk import yang lebih mudah
-export { formatDate } from '~/pages/articles/_lib/formatDate';
 export type { Article } from '~/pages/articles/_lib/fetchArticles';
 
 // Utility functions yang bisa digunakan di seluruh aplikasi

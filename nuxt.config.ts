@@ -4,10 +4,4 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxt/eslint", "@nuxt/ui"],
   css: ["~/assets/css/main.css"],
-  
-  // Alias untuk path yang lebih pendek (tetap berguna)
-  alias: {
-    '@utils': '~/utils',
-    '@components': '~/components',
-  }
 });
