@@ -77,16 +77,14 @@
 </template>
 
 <script setup lang="ts">
+// Import explicit untuk tracking yang lebih mudah
 import type { Article } from "../_lib/fetchArticles";
-import { formatDate } from "../_lib/formatDate";
+import { formatDate, estimateReadingTime } from '~/utils';
 
 const props = defineProps<{
   article: Article;
 }>();
 
-// Estimate reading time based on excerpt length (average 200 words per minute)
-const readingTime = computed(() => {
-  const words = props.article.excerpt.split(" ").length;
-  return Math.ceil(words / 200) || 1;
-});
+// Estimate reading time menggunakan utility function
+const readingTime = computed(() => estimateReadingTime(props.article.excerpt));
 </script>

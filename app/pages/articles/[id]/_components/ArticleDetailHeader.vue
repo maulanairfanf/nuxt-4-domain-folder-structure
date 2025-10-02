@@ -100,7 +100,8 @@
 </template>
 
 <script setup>
-import { formatDate } from "../../_lib/formatDate";
+// Import explicit untuk tracking yang lebih mudah
+import { formatDate, estimateReadingTime, generateViewCount } from '~/utils';
 
 const props = defineProps({
   article: {
@@ -114,12 +115,9 @@ const formatted = computed(() => formatDate(props.article.date));
 // Estimate reading time based on content length
 const readingTime = computed(() => {
   const content = props.article.content || props.article.excerpt || "";
-  const words = content.replace(/<[^>]*>/g, "").split(" ").length;
-  return Math.ceil(words / 200) || 1;
+  return estimateReadingTime(content);
 });
 
 // Mock view count - in real app this would come from analytics
-const viewCount = computed(() => {
-  return Math.floor(Math.random() * 1000) + 100;
-});
+const viewCount = computed(() => generateViewCount());
 </script>

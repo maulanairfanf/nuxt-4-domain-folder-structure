@@ -105,9 +105,9 @@
 </template>
 
 <script setup lang="ts">
-import ArticleHeader from "./_components/ArticleHeader.vue";
-import ArticleContent from "./_components/ArticleContent.vue";
-import ArticleComments from "./_components/ArticleComments.vue";
+import ArticleHeader from "./_components/ArticleDetailHeader.vue";
+import ArticleContent from "./_components/ArticleDetailContent.vue";
+import ArticleComments from "./_components/ArticleDetailComments.vue";
 import { fetchDetail } from "./_lib/fetchDetail";
 import type { Article } from "../_lib/fetchArticles";
 
