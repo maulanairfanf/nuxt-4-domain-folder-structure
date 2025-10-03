@@ -50,10 +50,12 @@
 </template>
 
 <script setup lang="ts">
+import { useAsyncData } from "nuxt/app";
 import ArticleList from "./_components/ArticleList.vue";
-import { fetchArticles, type Article } from "./_lib/fetchArticles";
+import type { Article } from "./_types";
 
+// Fetch data dari server API
 const { data: articles } = await useAsyncData<Article[]>("articles", () =>
-  fetchArticles(),
+  $fetch("/api/articles")
 );
 </script>

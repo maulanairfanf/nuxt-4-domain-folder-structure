@@ -7,8 +7,8 @@
 </template>
 
 <script setup lang="ts">
-import type { Article } from "../_lib/fetchArticles";
 import ArticleCard from "./ArticleCard.vue";
+import type { Article } from '../_types';
 
 defineProps<{
   articles: Article[];

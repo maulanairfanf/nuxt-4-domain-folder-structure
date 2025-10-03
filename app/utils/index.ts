@@ -1,6 +1,3 @@
-// Re-export utilities untuk import yang lebih mudah
-export type { Article } from '~/pages/articles/_lib/fetchArticles';
-
 // Utility functions yang bisa digunakan di seluruh aplikasi
 export const estimateReadingTime = (content: string): number => {
   const words = content.replace(/<[^>]*>/g, "").split(" ").length;
@@ -10,3 +7,12 @@ export const estimateReadingTime = (content: string): number => {
 export const generateViewCount = (): number => {
   return Math.floor(Math.random() * 1000) + 100;
 };
+
+export function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('id-ID', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  });
+}

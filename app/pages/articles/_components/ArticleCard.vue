@@ -5,7 +5,7 @@
       <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 transition-all duration-300" />
       <div class="absolute bottom-4 left-4 right-4">
         <span class="inline-block px-3 py-1 bg-white bg-opacity-90 text-xs font-medium text-gray-800 rounded-full">
-          {{ formatDate(article.date) }}
+          {{ formattedDate }}
         </span>
       </div>
     </div>
@@ -22,6 +22,42 @@
         {{ article.excerpt }}
       </p>
       
+      <!-- Article Meta -->
+      <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+        <span class="flex items-center">
+          <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+          {{ article.author }}
+        </span>
+        <span class="bg-gray-100 px-2 py-1 rounded-full text-xs">{{ article.category }}</span>
+      </div>
+
+      <!-- Stats -->
+      <div class="flex items-center justify-between text-xs text-gray-400 mb-4">
+        <div class="flex items-center space-x-4">
+          <span class="flex items-center">
+            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            {{ article.viewCount }}
+          </span>
+          <button class="flex items-center hover:text-red-500 transition-colors" @click="toggleLike">
+            <svg class="w-4 h-4 mr-1" :class="{ 'text-red-500 fill-current': isLiked }" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+            </svg>
+            {{ likeCount }}
+          </button>
+        </div>
+        <span class="flex items-center">
+          <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          {{ readingTime }} min baca
+        </span>
+      </div>
+
       <!-- Read More Button -->
       <div class="flex items-center justify-between">
         <NuxtLink 
@@ -34,12 +70,8 @@
           </svg>
         </NuxtLink>
         
-        <!-- Reading Time Estimate -->
-        <span class="text-xs text-gray-400 flex items-center">
-          <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          {{ readingTime }} min baca
+        <span class="text-xs text-gray-400">
+          {{ relativeTime }}
         </span>
       </div>
     </div>
@@ -47,21 +79,18 @@
 </template>
 
 <script setup lang="ts">
-// 🎯 BUKTI: 3 CARA IMPORT YANG PASTI BERFUNGSI DI NUXT 3
-
-// ✅ Cara 1: Relative path (SELALU berfungsi, tidak perlu config apapun)
-// import { formatDate } from '../_lib/formatDate';
-
-// ✅ Cara 2: Nuxt tilde alias (BUILT-IN, tidak perlu setup)  
-import { formatDate } from '~/pages/articles/_lib/formatDate';
-
-// ✅ Cara 3: Centralized utils (BEST PRACTICE)
-import { estimateReadingTime, type Article } from '~/utils';
+// Import dari domain articles
+import type { Article } from '../_types';
+import { useArticleFormat, useArticleLike } from '../_composables';
 
 const props = defineProps<{
   article: Article;
 }>();
 
-// Reading time calculation
-const readingTime = computed(() => estimateReadingTime(props.article.excerpt));
+// Format artikel menggunakan composable
+const articleRef = ref(props.article);
+const { readingTime, formattedDate, relativeTime } = useArticleFormat(articleRef);
+
+// Like functionality
+const { isLiked, likeCount, toggleLike } = useArticleLike(props.article.likeCount);
 </script>
