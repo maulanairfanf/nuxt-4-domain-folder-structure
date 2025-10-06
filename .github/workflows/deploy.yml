@@ -1,14 +1,12 @@
-name: CI - Nuxt 4
+name: Deploy - Nuxt 4 to Vercel
 
 on:
   push:
     branches:
       - main
-      - develop
-  pull_request:
 
 jobs:
-  lint-build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,8 +21,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Lint code
-        run: npm run lint
-
       - name: Build project
         run: npm run build
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
