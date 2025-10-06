@@ -1,14 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: "2025-07-15",
-  devtools: { enabled: true },
   modules: ["@nuxt/eslint", "@nuxt/ui"],
+  devtools: { enabled: true },
   css: ["~/assets/css/main.css"],
-  eslint: {
-    config: {
-      stylistic: true,
-    },
-  },
   ignore: [
     "**/_types/**",
     "**/_utils/**",
@@ -18,4 +12,10 @@ export default defineNuxtConfig({
     "**/_lib/**",
     "**/_locales/**",
   ],
+  compatibilityDate: "2025-07-15",
+  eslint: {
+    config: {
+      stylistic: true,
+    },
+  },
 });

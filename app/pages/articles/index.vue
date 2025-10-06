@@ -51,6 +51,7 @@
 
 <script setup lang="ts">
 import { useAsyncData } from "nuxt/app";
+
 import ArticleList from "./_components/ArticleList.vue";
 import type { Article } from "./_types";
 
