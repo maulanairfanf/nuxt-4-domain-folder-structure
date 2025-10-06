@@ -11,6 +11,6 @@ export function useArticleLike(initialCount: number = 0) {
   return {
     isLiked,
     likeCount,
-    toggleLike
+    toggleLike,
   };
 }

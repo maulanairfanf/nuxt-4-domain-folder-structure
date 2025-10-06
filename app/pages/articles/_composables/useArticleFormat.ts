@@ -1,7 +1,7 @@
 // pages/articles/_composables/useArticleFormat.ts
-import type { Article } from '../_types';
-import { calculateReadingTime, getRelativeTime } from '../_utils';
-import { formatDate } from '~/utils';
+import type { Article } from "../_types";
+import { calculateReadingTime, getRelativeTime } from "../_utils";
+import { formatDate } from "~/utils";
 
 export function useArticleFormat(article: Ref<Article>) {
   const readingTime = computed(() => {
@@ -19,6 +19,6 @@ export function useArticleFormat(article: Ref<Article>) {
   return {
     readingTime,
     formattedDate,
-    relativeTime
+    relativeTime,
   };
 }

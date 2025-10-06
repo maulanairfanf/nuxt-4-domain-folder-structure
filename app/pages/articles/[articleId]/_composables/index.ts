@@ -1,2 +1,2 @@
 // pages/articles/[articleId]/_composables/index.ts
-export * from './useArticleDetail';
+export * from "./useArticleDetail";
