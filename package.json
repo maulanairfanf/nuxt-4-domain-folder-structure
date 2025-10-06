@@ -7,11 +7,15 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "nuxt typecheck"
   },
   "dependencies": {
     "@nuxt/eslint": "1.9.0",
     "@nuxt/ui": "4.0.0",
+    "dompurify": "^3.2.7",
     "eslint": "^9.0.0",
     "nuxt": "^4.1.2",
     "typescript": "^5.6.3",

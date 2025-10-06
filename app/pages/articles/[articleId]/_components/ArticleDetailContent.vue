@@ -2,8 +2,9 @@
   <article class="bg-white rounded-lg shadow-md">
     <div class="p-6 md:p-8">
       <!-- Article content - Using v-html for rich content display -->
-      <!-- Note: In production, ensure article.content is properly sanitized on the server -->
-      <div class="prose prose-lg max-w-none" v-html="sanitizedContent" />
+      <!-- Note: Content is sanitized using DOMPurify to prevent XSS attacks -->
+      <!-- eslint-disable-next-line vue/no-v-html -->
+      <div class="prose prose-lg max-w-none" v-html="sanitizedContent"/>
     </div>
 
     <!-- Article Footer -->
@@ -54,14 +55,14 @@
 </template>
 
 <script setup lang="ts">
+import DOMPurify from 'dompurify';
+
 const props = defineProps<{
   article: { content: string };
 }>();
 
-// Basic sanitization - in production use a proper sanitization library
+// Use DOMPurify to sanitize HTML content
 const sanitizedContent = computed(() => {
-  // For now, just return the content as-is since it comes from our own API
-  // In production, use DOMPurify or similar library for proper sanitization
-  return props.article.content;
+  return DOMPurify.sanitize(props.article.content);
 });
 </script>
