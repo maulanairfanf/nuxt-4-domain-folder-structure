@@ -7,8 +7,9 @@
 </template>
 
 <script setup lang="ts">
-import ArticleCard from "./ArticleCard.vue";
 import type { Article } from "../_types";
+
+import ArticleCard from "./ArticleCard.vue";
 
 defineProps<{
   articles: Article[];

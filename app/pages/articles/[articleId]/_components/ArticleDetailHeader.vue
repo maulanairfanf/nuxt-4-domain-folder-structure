@@ -150,8 +150,9 @@
 </template>
 
 <script setup lang="ts">
-import type { ArticleDetailProps } from "../_types";
 import { useArticleDetail, useArticleNavigation } from "../_composables";
+import type { ArticleDetailProps } from "../_types";
+
 import { formatDate } from "~/utils";
 
 const props = defineProps<ArticleDetailProps>();

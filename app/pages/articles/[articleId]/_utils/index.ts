@@ -1,5 +1,5 @@
 // pages/articles/[articleId]/_utils/index.ts
-import { SOCIAL_URLS, COMMENT_CONFIG } from "../_constants";
+import { COMMENT_CONFIG, SOCIAL_URLS } from "../_constants";
 import type { ShareOptions } from "../_types";
 
 // Share utilities

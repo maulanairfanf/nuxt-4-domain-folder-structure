@@ -1,6 +1,6 @@
 // pages/articles/[articleId]/_composables/useArticleDetail.ts
 import type { Article } from "../../_types";
-import { SUCCESS_MESSAGES, ERROR_MESSAGES } from "../_constants";
+import { ERROR_MESSAGES, SUCCESS_MESSAGES } from "../_constants";
 import { copyToClipboard, generateArticleUrl } from "../_utils";
 
 export const useArticleDetail = () => {

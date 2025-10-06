@@ -151,8 +151,8 @@
 
 <script setup lang="ts">
 // Import dari domain articles
-import type { Article } from "../_types";
 import { useArticleFormat, useArticleLike } from "../_composables";
+import type { Article } from "../_types";
 
 const props = defineProps<{
   article: Article;

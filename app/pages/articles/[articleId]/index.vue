@@ -105,10 +105,11 @@
 </template>
 
 <script setup lang="ts">
-import ArticleHeader from "./_components/ArticleDetailHeader.vue";
-import ArticleContent from "./_components/ArticleDetailContent.vue";
-import ArticleComments from "./_components/ArticleDetailComments.vue";
 import type { Article } from "../_types";
+
+import ArticleComments from "./_components/ArticleDetailComments.vue";
+import ArticleContent from "./_components/ArticleDetailContent.vue";
+import ArticleHeader from "./_components/ArticleDetailHeader.vue";
 
 const route = useRoute();
 const articleId = route.params.articleId as string;
