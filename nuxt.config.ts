@@ -4,13 +4,18 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxt/eslint", "@nuxt/ui"],
   css: ["~/assets/css/main.css"],
+  eslint: {
+    config: {
+      stylistic: true,
+    },
+  },
   ignore: [
-    '**/_types/**',
-    '**/_utils/**', 
-    '**/_constants/**',
-    '**/_composables/**',
-    '**/_components/**',
-    '**/_lib/**',
-    '**/_locales/**'
-  ]
+    "**/_types/**",
+    "**/_utils/**",
+    "**/_constants/**",
+    "**/_composables/**",
+    "**/_components/**",
+    "**/_lib/**",
+    "**/_locales/**",
+  ],
 });

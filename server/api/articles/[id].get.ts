@@ -1,12 +1,13 @@
 // server/api/articles/[id].get.ts
-export default defineEventHandler(event => {
+export default defineEventHandler((event) => {
   const id = event.context.params?.id;
-  
+
   const articlesData = [
     {
       id: "1",
       title: "Belajar Nuxt 4 — Struktur folder by Domain",
-      excerpt: "Panduan lengkap mengorganisir kode Nuxt dengan struktur folder berdasarkan domain business untuk maintainability yang lebih baik.",
+      excerpt:
+        "Panduan lengkap mengorganisir kode Nuxt dengan struktur folder berdasarkan domain business untuk maintainability yang lebih baik.",
       content: `
         <h1>Mengapa Struktur Folder by Domain?</h1>
         <p>Dalam pengembangan aplikasi yang kompleks, organisasi kode menjadi sangat penting. Struktur folder by domain membantu kita dalam:</p>
@@ -39,12 +40,13 @@ export default defineEventHandler(event => {
       readingTime: 8,
       likes: 18,
       views: 245,
-      isBookmarked: false
+      isBookmarked: false,
     },
     {
-      id: "2", 
+      id: "2",
       title: "Nuxt Tips & Tricks untuk Developer",
-      excerpt: "Kumpulan tips dan trik berguna untuk mengoptimalkan pengembangan aplikasi Nuxt, dari routing hingga performance optimization.",
+      excerpt:
+        "Kumpulan tips dan trik berguna untuk mengoptimalkan pengembangan aplikasi Nuxt, dari routing hingga performance optimization.",
       content: `
         <h1>Tips & Tricks Nuxt Development</h1>
         <p>Berikut adalah kumpulan tips yang akan membantu Anda dalam mengembangkan aplikasi Nuxt:</p>
@@ -77,12 +79,13 @@ const { data: articles } = await useFetch('/api/articles')</code></pre>
       readingTime: 5,
       likes: 25,
       views: 189,
-      isBookmarked: true
+      isBookmarked: true,
     },
     {
       id: "3",
       title: "Vue 3 Composition API Best Practices",
-      excerpt: "Best practices dalam menggunakan Composition API untuk membangun aplikasi Vue 3 yang lebih maintainable dan reusable.",
+      excerpt:
+        "Best practices dalam menggunakan Composition API untuk membangun aplikasi Vue 3 yang lebih maintainable dan reusable.",
       content: `
         <h1>Composition API Best Practices</h1>
         <p>Composition API adalah salah satu fitur terbesar di Vue 3. Berikut adalah best practices untuk menggunakannya:</p>
@@ -111,22 +114,22 @@ export const useCounter = () => {
   \`\${firstName.value} \${lastName.value}\`
 )</code></pre>
       `,
-      date: "2024-12-05T09:15:00Z", 
+      date: "2024-12-05T09:15:00Z",
       author: "Mike Johnson",
       category: "Vue",
       tags: ["vue3", "composition-api", "javascript", "best-practices"],
       readingTime: 12,
       likes: 42,
       views: 312,
-      isBookmarked: false
-    }
+      isBookmarked: false,
+    },
   ];
-  
-  const found = articlesData.find(article => article.id === id);
-  
+
+  const found = articlesData.find((article) => article.id === id);
+
   if (!found) {
     throw createError({ statusCode: 404, statusMessage: "Article not found" });
   }
-  
+
   return found;
 });

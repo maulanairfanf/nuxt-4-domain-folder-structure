@@ -20,7 +20,7 @@ export interface Article {
 export interface ArticleFilters {
   search?: string;
   category?: string;
-  sortBy?: 'date' | 'title' | 'views' | 'likes';
+  sortBy?: "date" | "title" | "views" | "likes";
 }
 
 export interface Author {
@@ -72,9 +72,9 @@ export interface SocialLinks {
   website?: string;
 }
 
-export type ArticleStatus = 'draft' | 'published' | 'archived' | 'featured';
-export type SortBy = 'date' | 'title' | 'views' | 'likes';
-export type SortOrder = 'asc' | 'desc';
+export type ArticleStatus = "draft" | "published" | "archived" | "featured";
+export type SortBy = "date" | "title" | "views" | "likes";
+export type SortOrder = "asc" | "desc";
 
 // API Response types
 export interface ArticlesResponse {

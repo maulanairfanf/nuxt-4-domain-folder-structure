@@ -113,9 +113,7 @@ import type { Article } from "../_types";
 const route = useRoute();
 const articleId = route.params.articleId as string;
 
- const fetchDetail = (
-  id: string,
-): Promise<Article & { content: string }> => {
+const fetchDetail = (id: string): Promise<Article & { content: string }> => {
   return $fetch(`/api/articles/${id}`);
 };
 
@@ -123,7 +121,8 @@ const {
   data: article,
   pending,
   error,
-} = await useAsyncData<Article & { content: string }>(`article-${articleId}`, () =>
-  fetchDetail(articleId),
+} = await useAsyncData<Article & { content: string }>(
+  `article-${articleId}`,
+  () => fetchDetail(articleId),
 );
 </script>

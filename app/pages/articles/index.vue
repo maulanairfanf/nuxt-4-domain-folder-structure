@@ -56,6 +56,6 @@ import type { Article } from "./_types";
 
 // Fetch data dari server API
 const { data: articles } = await useAsyncData<Article[]>("articles", () =>
-  $fetch("/api/articles")
+  $fetch("/api/articles"),
 );
 </script>

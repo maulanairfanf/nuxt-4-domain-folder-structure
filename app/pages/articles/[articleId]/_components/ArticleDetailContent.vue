@@ -4,7 +4,7 @@
       <!-- Article content - Using v-html for rich content display -->
       <!-- Note: Content is sanitized using DOMPurify to prevent XSS attacks -->
       <!-- eslint-disable-next-line vue/no-v-html -->
-      <div class="prose prose-lg max-w-none" v-html="sanitizedContent"/>
+      <div class="prose prose-lg max-w-none" v-html="sanitizedContent" />
     </div>
 
     <!-- Article Footer -->
@@ -55,7 +55,7 @@
 </template>
 
 <script setup lang="ts">
-import DOMPurify from 'dompurify';
+import DOMPurify from "dompurify";
 
 const props = defineProps<{
   article: { content: string };

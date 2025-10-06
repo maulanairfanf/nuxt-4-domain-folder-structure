@@ -80,12 +80,15 @@
             class="flex items-center px-3 py-1 rounded-full border transition-colors"
             :class="{
               'bg-red-50 border-red-200 text-red-600': isLiked,
-              'bg-gray-50 border-gray-200 text-gray-600 hover:text-red-600': !isLiked
+              'bg-gray-50 border-gray-200 text-gray-600 hover:text-red-600':
+                !isLiked,
             }"
             @click="toggleLike"
           >
             <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              <path
+                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+              />
             </svg>
             {{ likes }}
           </button>
@@ -95,12 +98,13 @@
             class="flex items-center px-3 py-1 rounded-full border transition-colors"
             :class="{
               'bg-blue-50 border-blue-200 text-blue-600': isBookmarked,
-              'bg-gray-50 border-gray-200 text-gray-600 hover:text-blue-600': !isBookmarked
+              'bg-gray-50 border-gray-200 text-gray-600 hover:text-blue-600':
+                !isBookmarked,
             }"
             @click="toggleBookmark"
           >
             <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z"/>
+              <path d="M17 3H7c-1.1 0-2 .9-2 2v16l7-3 7 3V5c0-1.1-.9-2-2-2z" />
             </svg>
             Save
           </button>
@@ -110,8 +114,18 @@
             class="flex items-center px-3 py-1 rounded-full border bg-gray-50 border-gray-200 text-gray-600 hover:text-green-600 transition-colors"
             @click="handleShare"
           >
-            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+            <svg
+              class="w-4 h-4 mr-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"
+              />
             </svg>
             Share
           </button>
@@ -136,45 +150,45 @@
 </template>
 
 <script setup lang="ts">
-import type { ArticleDetailProps } from '../_types'
-import { useArticleDetail, useArticleNavigation } from '../_composables'
-import { formatDate } from '~/utils'
+import type { ArticleDetailProps } from "../_types";
+import { useArticleDetail, useArticleNavigation } from "../_composables";
+import { formatDate } from "~/utils";
 
-const props = defineProps<ArticleDetailProps>()
+const props = defineProps<ArticleDetailProps>();
 
 // Use domain composables
-const { 
-  likes, 
-  views, 
-  isBookmarked, 
+const {
+  likes,
+  views,
+  isBookmarked,
   isLiked,
-  toggleLike, 
-  toggleBookmark, 
+  toggleLike,
+  toggleBookmark,
   shareArticle,
-  initializeFromArticle 
-} = useArticleDetail()
+  initializeFromArticle,
+} = useArticleDetail();
 
-const { goToCategory, goToTag } = useArticleNavigation()
+const { goToCategory, goToTag } = useArticleNavigation();
 
 // Initialize data from article
 onMounted(() => {
-  initializeFromArticle(props.article)
-})
+  initializeFromArticle(props.article);
+});
 
 // Computed properties
-const formatted = computed(() => formatDate(props.article.date))
-const readingTime = computed(() => props.article.readingTime || 5)
+const formatted = computed(() => formatDate(props.article.date));
+const readingTime = computed(() => props.article.readingTime || 5);
 
 // Event handlers
 const handleCategoryClick = () => {
-  goToCategory(props.article.category)
-}
+  goToCategory(props.article.category);
+};
 
 const handleTagClick = (tag: string) => {
-  goToTag(tag)
-}
+  goToTag(tag);
+};
 
 const handleShare = () => {
-  shareArticle(props.article)
-}
+  shareArticle(props.article);
+};
 </script>
