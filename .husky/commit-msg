@@ -1,5 +1,19 @@
 #!/usr/bin/env sh
 # Validate commit message format
+
+# Allow merge commits
+if grep -qE '^Merge' "$1"; then
+    echo "✅ Merge commit allowed"
+    exit 0
+fi
+
+# Allow revert commits  
+if grep -qE '^Revert' "$1"; then
+    echo "✅ Revert commit allowed"
+    exit 0
+fi
+
+# Validate conventional commit format
 commit_regex='^(feat|fix|docs|style|refactor|test|chore)(\(.+\))?: .{1,50}'
 
 if ! grep -qE "$commit_regex" "$1"; then
@@ -7,5 +21,8 @@ if ! grep -qE "$commit_regex" "$1"; then
     echo "Format: type(scope): description"
     echo "Types: feat, fix, docs, style, refactor, test, chore"
     echo "Example: feat(articles): add search functionality"
+    echo "Note: Merge and Revert commits are allowed"
     exit 1
 fi
+
+echo "✅ Commit message format is valid"
