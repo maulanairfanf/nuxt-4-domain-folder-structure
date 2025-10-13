@@ -33,7 +33,7 @@
           :key="value"
           class="inline-block px-2 py-1 bg-gray-100 text-xs font-medium text-gray-600 rounded-full mr-2"
         >
-          #{{ value }}aaasdasdasd
+          #{{ value }}
         </span>
       </div>
 
