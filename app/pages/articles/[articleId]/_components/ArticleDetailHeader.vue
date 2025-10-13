@@ -146,6 +146,7 @@
         </div>
       </div>
     </div>
+  </header>
 </template>
 
 <script setup lang="ts">
