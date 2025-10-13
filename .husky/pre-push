@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
-# Ensure Node 20 is used
-# export PATH="$HOME/.nvm/versions/node/v20.18.1/bin:$PATH"
+Ensure Node 20 is used
+export PATH="$HOME/.nvm/versions/node/v20.18.1/bin:$PATH"
 
-# # Check Node version
-# echo "🔧 Using Node version: $(node --version)"
+# Check Node version
+echo "🔧 Using Node version: $(node --version)"
 
 # Run type check and build before push
 echo "🔍 Running type check..."
