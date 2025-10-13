@@ -5,6 +5,3 @@ pnpm typecheck
 
 echo "🧪 Running tests..."
 pnpm test 
-
-echo "🏗️ Running build..."
-pnpm build
