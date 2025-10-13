@@ -13,6 +13,7 @@ export default defineEventHandler(() => {
       category: "Technology",
       viewCount: 245,
       likeCount: 18,
+      tags: ["nuxt", "vue", "architecture", "best-practices"],
     },
     {
       id: "2",
@@ -26,6 +27,7 @@ export default defineEventHandler(() => {
       category: "Design",
       viewCount: 189,
       likeCount: 25,
+      tags: ["nuxt", "vue", "architecture", "best-practices"],
     },
     {
       id: "3",
@@ -39,6 +41,7 @@ export default defineEventHandler(() => {
       category: "Business",
       viewCount: 312,
       likeCount: 42,
+      tags: ["nuxt", "vue", "architecture", "best-practices"],
     },
   ];
 });

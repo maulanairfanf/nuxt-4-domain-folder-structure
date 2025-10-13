@@ -20,13 +20,22 @@
 
     <!-- Article Content -->
     <div class="p-6">
-      <h2
-        class="text-xl font-bold text-gray-800 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors duration-300"
-      >
-        <NuxtLink :to="`/articles/${article.id}`" class="hover:underline">
-          {{ article.title }}
-        </NuxtLink>
-      </h2>
+      <div>
+        <h2
+          class="text-xl font-bold text-gray-800 mb-3 line-clamp-2 group-hover:text-blue-600 transition-colors duration-300"
+        >
+          <NuxtLink :to="`/articles/${article.id}`" class="hover:underline">
+            {{ article.title }}
+          </NuxtLink>
+        </h2>
+        <span
+          v-for="value in article.tags"
+          :key="value"
+          class="inline-block px-2 py-1 bg-gray-100 text-xs font-medium text-gray-600 rounded-full mr-2"
+        >
+          #{{ value }}aaasdasdasd
+        </span>
+      </div>
 
       <p class="text-gray-600 mb-4 line-clamp-3 leading-relaxed">
         {{ article.excerpt }}
