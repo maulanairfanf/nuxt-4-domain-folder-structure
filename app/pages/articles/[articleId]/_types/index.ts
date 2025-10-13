@@ -1,5 +1,4 @@
-// pages/articles/[articleId]/_types/index.ts
-import type { Article } from "~/app/pages/articles/_types";
+import type { Article } from "../../_types";
 
 // Types spesifik untuk article detail page
 export interface ArticleDetailState {
