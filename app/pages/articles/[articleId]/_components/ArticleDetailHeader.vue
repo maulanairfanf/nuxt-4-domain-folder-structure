@@ -130,6 +130,7 @@
             Share
           </button>
         </div>
+      </div>
 
       <!-- Tags Section -->
       <div v-if="article.tags && article.tags.length > 0" class="px-6 pb-6">
@@ -145,7 +146,6 @@
         </div>
       </div>
     </div>
-  </header>
 </template>
 
 <script setup lang="ts">
