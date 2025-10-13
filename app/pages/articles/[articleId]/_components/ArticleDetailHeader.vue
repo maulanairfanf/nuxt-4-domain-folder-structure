@@ -130,7 +130,6 @@
             Share
           </button>
         </div>
-      </div>
 
       <!-- Tags Section -->
       <div v-if="article.tags && article.tags.length > 0" class="px-6 pb-6">
