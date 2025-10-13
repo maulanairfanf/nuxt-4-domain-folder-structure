@@ -146,52 +146,50 @@
         </div>
       </div>
     </div>
-
-    <script setup lang="ts">
-      import { useArticleDetail, useArticleNavigation } from "../_composables";
-      import type { ArticleDetailProps } from "../_types";
-
-      import { formatDate } from "~/utils";
-
-      // Intentional error: variable not used
-      const unusedVariable = "this should cause error";
-      const props = defineProps<ArticleDetailProps>();
-
-      // Use domain composables
-      const {
-        likes,
-        views,
-        isBookmarked,
-        isLiked,
-        toggleLike,
-        toggleBookmark,
-        shareArticle,
-        initializeFromArticle,
-      } = useArticleDetail();
-
-      const { goToCategory, goToTag } = useArticleNavigation();
-
-      // Initialize data from article
-      onMounted(() => {
-        initializeFromArticle(props.article);
-      });
-
-      // Computed properties
-      const formatted = computed(() => formatDate(props.article.date));
-      const readingTime = computed(() => props.article.readingTime || 5);
-
-      // Event handlers
-      const handleCategoryClick = () => {
-        goToCategory(props.article.category);
-      };
-
-      const handleTagClick = (tag: string) => {
-        goToTag(tag);
-      };
-
-      const handleShare = () => {
-        shareArticle(props.article);
-      };
-    </script>
   </header>
 </template>
+
+<script setup lang="ts">
+import { useArticleDetail, useArticleNavigation } from "../_composables";
+import type { ArticleDetailProps } from "../_types";
+
+import { formatDate } from "~/utils";
+
+const props = defineProps<ArticleDetailProps>();
+
+// Use domain composables
+const {
+  likes,
+  views,
+  isBookmarked,
+  isLiked,
+  toggleLike,
+  toggleBookmark,
+  shareArticle,
+  initializeFromArticle,
+} = useArticleDetail();
+
+const { goToCategory, goToTag } = useArticleNavigation();
+
+// Initialize data from article
+onMounted(() => {
+  initializeFromArticle(props.article);
+});
+
+// Computed properties
+const formatted = computed(() => formatDate(props.article.date));
+const readingTime = computed(() => props.article.readingTime || 5);
+
+// Event handlers
+const handleCategoryClick = () => {
+  goToCategory(props.article.category);
+};
+
+const handleTagClick = (tag: string) => {
+  goToTag(tag);
+};
+
+const handleShare = () => {
+  shareArticle(props.article);
+};
+</script>
