@@ -9,7 +9,6 @@
           khusus untuk Anda
         </p>
       </div>
-
       <!-- Articles Section -->
       <ArticleList :articles="articles || []" />
 

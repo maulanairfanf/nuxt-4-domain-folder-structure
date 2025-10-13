@@ -1,4 +1,4 @@
-import type { Article } from "../../_types";
+import type { Article } from "~/pages/articles/_types";
 
 // Types spesifik untuk article detail page
 export interface ArticleDetailState {

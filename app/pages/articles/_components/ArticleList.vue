@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-6">
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-1">
-      <ArticleCard v-for="a in articles" :key="a.id" :article="a" />
+      <ArticleCard v-for="a in articles" :key="a.id" :article="a" />asads
     </div>
   </div>
 </template>
