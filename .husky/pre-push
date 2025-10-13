@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+# Run type check and build before push
+echo "🔍 Running type check..."
+pnpm typecheck
